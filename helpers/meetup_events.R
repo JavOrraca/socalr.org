@@ -34,7 +34,8 @@ token <- meetupr::meetup_auth(
 Sys.setenv(MEETUPR_PAT = temptoken)
 
 socal_groups <- c("SOCAL-RUG", 
-                  "Santa-Barbara-R-Users-Group", 
+                  # "Santa-Barbara-R-Users-Group", 
+                  "central-coast-r-users-group",
                   "Real-Data-Science-USA-R-Meetup",
                   "useR-Group-in-San-Luis-Obispo-County", 
                   "rladies-irvine",
@@ -63,9 +64,10 @@ events <- events_raw |>
   dplyr::arrange(dplyr::desc(time)) |>
   dplyr::mutate(Upcoming = dplyr::if_else(status == "published", "&#x2713;", ""),
                 Chapter = dplyr::case_when(chapter == "SOCAL-RUG" ~ "SoCal RUG",
-                                           chapter == "Santa-Barbara-R-Users-Group" ~ "Santa Barbara RUG",
+                                           # chapter == "Santa-Barbara-R-Users-Group" ~ "Santa Barbara RUG",
+                                           chapter == "central-coast-r-users-group" ~ "Central Coast R Users Group",
                                            chapter == "Real-Data-Science-USA-R-Meetup" ~ "Los Angeles RUG",
-                                           chapter == "useR-Group-in-San-Luis-Obispo-County" ~ "San Luis Obispo RUG",
+                                           chapter == "useR-Group-in-San-Luis-Obispo-County" ~ "useR Group in San Luis Obispo County",
                                            chapter == "rladies-irvine" ~ "R-Ladies Irvine",
                                            chapter == "rladies-la" ~ "R-Ladies Los Angeles",
                                            chapter == "rladies-pasadena" ~ "R-Ladies Pasadena",
